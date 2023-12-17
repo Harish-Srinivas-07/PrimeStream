@@ -73,9 +73,13 @@ Welcome to Prime Stream, a captivating web application designed for streaming mo
    - Visit [Prime Streamer](https://primestreamer.netlify.app).
    - Create a user account to access Prime Stream.
 
-## Note
+## Video Streaming Provider 📺
 
-To deploy the application, configure Azure AD B2C authentication and host the movie data CSV file on GitHub. Refer to the code comments for instructions, and replace placeholder URLs and paths with your actual content.
+Movies are available for download, stream, and like using [Streamtape](https://streamtape.com) as the video streaming provider.
+
+## Disclaimer ⚠️
+
+Hey streamers, use wisely to understand the frontend and backend implementation, dynamic updates of website content in a static website using CSV GitHub host, for educational purposes only.
 
 **Lights, Camera, Action! Enjoy your streaming experience with Prime Stream! 🍿🎉**
 
@@ -99,3 +103,4 @@ file :
            ->index.html,style.css
           -> img folder:
                     ->hd,like,back,logo.pngs
+```
