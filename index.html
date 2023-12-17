@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Stream</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="./netflix-images/icon.png" type="image/png">
+
+</head>
+
+<body>
+    <!-- nav -->
+    <div class="nav" id="nav">
+        <a href="https://primestream.netlify.app/?code=hari">
+        <img src="netflix-images/prime-logo.png" alt="" class="nav_logo"></a>
+        <a href="https://instagram.com/being_exception">
+        <img src="netflix-images/netflix-avatar.png" alt="" class="nav_avatar"></a>
+    </div>
+
+    <!-- header -->
+    <div class="banner">
+        <div class="banner_contents">
+            <h1 class="banner_title">Jigarthanda Double X</h1>
+            <div class="banner_buttons">
+                <button class="banner_button" onclick="playButton()">Play</button>
+                <button class="banner_button" onclick="playButtonClick()">Last Played</button>
+            </div>
+            <div class="banner_description">
+                In 1975, in Tamil Nadu, India, an unlikely filmmaker and a dangerous gangster collaborate to make a Western movie.
+            </div>
+        </div>
+        <div class="banner_fade"></div>
+    </div>
+
+    <!-- Netflix Originals -->
+    <div class="row">
+        <h1>Stream Originals</h1>
+        <div class="row_posters" id="netflixOriginalsPosters"></div>
+    </div>
+
+    <!-- Trending Now -->
+    <div class="row">
+        <h1>Trending Now</h1>
+        <div class="row_posters" id="trendingPosters"></div>
+    </div>
+
+    <!-- All time fav -->
+    <div class="row">
+        <h1>Gems for You</h1>
+        <div class="row_posters" id="allTimeFavPosters"></div>
+    </div>
+
+    <!-- New Arrivals -->
+    <div class="row">
+        <h1>New Arrivals</h1>
+        <div class="row_posters" id="newArrivals"></div>
+    </div>
+
+    <!-- Popular -->
+    <div class="row">
+        <h1>Popular on PrimeStream</h1>
+        <div class="row_posters" id="Popular"></div>
+    </div>
+
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+        if (window.scrollY >= 1) {
+            nav.classList.add('nav_black');
+        } else {
+            nav.classList.remove('nav_black');
+        }});
+
+        var currentUrl = window.location.href;
+
+        if (currentUrl.includes("code") || currentUrl.includes("id_token")) {
+            //document.write("Page is loading...");
+        } else {
+            alert("Authentication required. Please log in.");
+            window.location.href = "https://primestreamer.netlify.app";
+        }
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if CSV data is already in localStorage
+            const storedData = localStorage.getItem('moviesData');
+
+            if (storedData) {
+                // If data is present, parse and update the rows
+                const categories = parseCSVData(storedData);
+                updateRows(categories);
+            } else {
+                // If data is not present, fetch and store in localStorage
+                fetchMoviesData();
+            }
+        });
+
+        function playButton() {
+            localStorage.setItem('title', "Jigardhanda Double x");
+            localStorage.setItem('year', "2023");
+            localStorage.setItem('duration', "2h 49min");
+            localStorage.setItem('previewUrl', "https://streamtape.com/e/ZoDaqL9aQPTqaGM/");
+            localStorage.setItem('description', "In 1975 in Tamil Nadu India an unlikely filmmaker and a dangerous gangster collaborate to make a Western movie");
+            window.location.href = "./popup/index.html";
+        }
+
+        function playButtonClick() {
+            window.location.href = "./popup/index.html";
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+        // Initial fetch and update
+        fetchAndStoreMoviesData();
+
+        // Set up a timer to fetch data every 30 seconds
+        setInterval(fetchAndStoreMoviesData, 30000);
+        });
+        
+        function fetchAndStoreMoviesData() {
+        // Remove the locally stored CSV file
+        localStorage.removeItem('moviesData');
+
+        // Fetch and store the fresh CSV data
+        fetchMoviesData();
+        }
+
+        function fetchMoviesData() {
+        // Append a timestamp as a query parameter to the URL for cache-busting
+        const url = `https://raw.githubusercontent.com/HarishSrinivasSR/Material-library/main/movie23.csv`;
+
+        fetch(url)
+        //fetch("newmovie.csv")
+            .then(response => response.text())
+            .then(csvData => {
+                // Store the CSV data in localStorage
+                localStorage.setItem('moviesData', csvData);
+
+                // Parse and update the rows
+                const categories = parseCSVData(csvData);
+                updateRows(categories);
+            })
+            .catch(error => {
+            console.error('Fetch error:', error);
+            });
+        }
+
+        function parseCSVData(csvData) {
+            const rows = csvData.split('\n');
+            const categories = {
+                original: [],
+                trending: [],
+                imgurl: [],
+                newarrival: [],
+                popular:[],
+            };
+
+        rows.forEach(row => {
+            const trimmedRow = row.trim();
+
+            if (trimmedRow.length > 0) {
+                const rowElements = trimmedRow.split(',');
+                if (rowElements.length === 7) {
+                    //const [category, imageUrl, title, year, duration, previewUrl, description] = rowElements;
+                    const [category, title, year, duration, description, imageUrl,previewUrl] = rowElements;
+                    const img = document.createElement('img');
+                    img.src = imageUrl.trim();
+                    img.alt = 'Movie Poster ';
+                        if (category === 'original') {
+                            img.classList.add('large');console.log("large");
+                        } else if (category === 'newarrival') {
+                            img.classList.add('large');
+                        } else {
+                            img.classList.add('row_poster');console.log("small");
+                        }
+
+                        switch (category) {
+                            case 'original':
+                                categories.original.push({ img, title, year, duration, previewUrl, description });
+                                break;
+                            case 'trending':
+                                categories.trending.push({ img, title, year, duration, previewUrl, description });
+                                break;
+                            case 'imgurl':
+                                categories.imgurl.push({ img, title, year, duration, previewUrl, description });
+                                break;
+                            case 'newarrival':
+                                categories.newarrival.push({ img, title, year, duration, previewUrl, description });
+                                break;
+                            case 'popular':
+                                categories.popular.push({ img, title, year, duration, previewUrl, description });
+                                break;
+                        }
+                    } else {
+                        console.error('Error: Invalid CSV row:', trimmedRow);
+                    }
+                } else {
+                    console.log("Error: Empty Line");
+                }
+            });
+            return categories;
+        }
+
+        function updateRows(categories) {
+            updateRow('netflixOriginalsPosters', categories.original);
+            updateRow('trendingPosters', categories.trending);
+            updateRow('allTimeFavPosters', categories.imgurl);
+            updateRow('newArrivals', categories.newarrival);
+            updateRow('Popular', categories.popular);
+        }
+
+        function updateRow(containerId, movies) {
+            const rowContainer = document.getElementById(containerId);
+            rowContainer.innerHTML = '';
+
+            movies.forEach(movie => {
+                const { img, title, year, duration, previewUrl, description } = movie;
+
+                const anchor = document.createElement('a');
+                anchor.href = "javascript:void(0)";
+                anchor.addEventListener('click', function () {
+                    openNewWindow(title, year, duration, previewUrl, description);
+                });
+
+                anchor.appendChild(img);
+                rowContainer.appendChild(anchor);
+            });
+        }
+
+        function openNewWindow(title, year, duration, previewUrl, description) {
+            localStorage.setItem('title', title);
+            localStorage.setItem('year', year);
+            localStorage.setItem('duration', duration);
+            localStorage.setItem('previewUrl', previewUrl);
+            localStorage.setItem('description', description);
+            window.location.href = "popup/index.html";
+        }
+        console.log(title,year,duration);
+        
+    </script>
+
+</body>
+
+</html>
+
+</body>
+
+</html>
