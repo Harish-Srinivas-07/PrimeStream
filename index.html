@@ -128,10 +128,13 @@
 
         function fetchMoviesData() {
         // Append a timestamp as a query parameter to the URL for cache-busting
-        const url = `https://raw.githubusercontent.com/HarishSrinivasSR/Material-library/main/movie23.csv`;
+        const url = `https://raw.githubusercontent.com/Harish-Srinivas-07/PrimeStream/main/newmovie.csv`;
+            // can also use these resource -- online backup
+        //const url = `https://raw.githubusercontent.com/HarishSrinivasSR/Material-library/main/movie23.csv`;
 
         fetch(url)
         //fetch("newmovie.csv")
+            // use these csv for local file upload
             .then(response => response.text())
             .then(csvData => {
                 // Store the CSV data in localStorage
