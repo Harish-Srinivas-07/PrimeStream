@@ -1,149 +1,161 @@
-*{
+* {
     margin: 0;
     box-sizing: border-box;
 }
-h1, h2 {
-    font-family: 'Poppins', sans-serif;
+
+.nav_logo {
+    width: 150px;
+    object-fit: contain;
 }
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: black;
-}
-.row_poster{
-    width: 200px;
-    margin-right: 5px;
-    transition: transform 450ms;
-    display: flex;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    padding: 5px;
+.nav_avatar {
+    width: 35px;
+    object-fit: contain;
 }
 
-.row_posters{
-    display: flex;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    padding: 20px;
-}
-
-.row_posters::-webkit-scrollbar{
-    display:none;
-}
-.row_poster:hover {
-    transform: scale(1.08);
-}
-
-.large{
-    max-height: 250px;
-    width: 175px;
-    object-fit:contain;
-    margin-right: 10px;
-    transition: transform 450ms;
-}
-
-.large:hover{
-    transform: scale(1.1);
-}
-
-.larges{
-    max-height: 250px;
-    width: 175px;
-    object-fit:contain;
-    margin-right: 10px;
-    transition: transform 450ms;
-}
-
-.larges:hover{
-    transform: scale(1.1);
-}
-
-.row{
-    color: white;
-    margin-left: 20px;
-}
-
-.banner{
-    background-image: url(https://www.filmibeat.com/img/2023/11/jigarthandadoublex-1699937883.jpg);
-    background-size: cover;
-    background-position: center center;
-    color: rgb(255, 255, 255);
-    object-fit :contain;
-    height: 500px;
-}
-
-.banner_contents{
+.banner_contents {
     margin-left: 40px;
     padding-top: 140px;
     height: 200px;
 }
 
-.banner_title{
+.banner_title {
     font-size: 2.5rem;
     font-weight: 800;
     padding-bottom: 0.3rem;
 }
 
-.banner_description{
+.banner_description {
     width: 45rem;
     line-height: 1.3;
     padding-top: 1rem;
     font-size: 1rem;
-    max-width: 280px;
-    height:180px;
+    max-width: 80vw;
+    height: 180px;
 }
 
-.banner_button{
+.banner_button {
     cursor: pointer;
-    color: white;
+    color: rgb(0, 0, 0);
     outline: none;
     border: none;
-    font-weight: 700 ;
+    font-weight: 700;
     border-radius: 0.5vw;
     padding-left: 2rem;
     padding-right: 2rem;
     margin-right: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    background-color: rgba(51, 51, 51, 0.5);
+    background-color: rgba(3, 3, 3, 0.463);
 }
 
-.banner_button:hover{
-    color: black;
+.banner_button:hover {
+    color: rgb(255, 255, 255);
     background-color: whitesmoke;
     transition: all 0.2s;
     transform: scale(1.04);
+    background-color: rgba(51, 51, 51, 0.5);
 }
 
-.banner_fade{
+.banner_fade {
     margin-top: 180px;
     height: 7.5rem;
-    background-image: linear-gradient(180deg,transparent,rgba(37,37,37,0.61),black);
+    background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), black);
 }
 
-.nav_logo{
-    width: 100px;
-    object-fit: contain;
-}
-
-.nav_avatar{
-    width: 35px;
-    object-fit: contain;
-}
-
-.nav{
+.nav {
     position: fixed;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 15px;
     z-index: 1;
     transition-timing-function: ease-in;
     transition: all 0.5s;
 }
 
-.nav_black{
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
     background-color: black;
+    color: white;
+}
+
+.row {
+    margin-left: 20px;
+}
+
+#searchInput::placeholder {
+    color: rgb(255, 255, 255);
+}
+
+.row_posters {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 20px;
+
+}
+
+.row_poster {
+    width: auto;
+    /* Allows the card to grow to the size of the content */
+    margin-right: 5px;
+    transition: transform 450ms;
+    display: flex;
+    padding: 5px;
+}
+
+.small {
+    max-width: 200px;
+    max-height: 120px;
+    transition: transform 450ms;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.large {
+    max-width: 175px;
+    /* Removes the maximum width restriction */
+    max-height: 245px;
+    /* Removes the maximum height restriction */
+    /* Ensures images will take their original height */
+    object-fit: contain;
+    margin-right: 10px;
+    transition: transform 450ms;
+}
+
+.row_posters::-webkit-scrollbar {
+    display: none;
+}
+
+.large:hover,
+.small:hover {
+    transform: scale(1.1);
+}
+
+.banner {
+    background-image: url(https://www.filmibeat.com/img/2023/11/jigarthandadoublex-1699937883.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: 500px;
+}
+
+.banner_contents {
+    margin-left: 40px;
+    padding-top: 140px;
+    height: 200px;
+}
+
+
+.nav {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
 }
 
 .text_wrap {
@@ -158,12 +170,89 @@ body{
     font-size: 200px;
     letter-spacing: 0;
     line-height: normal;
-  }
+}
 
-  .wrap {
+.wrap {
     position: absolute;
     width: 263px;
     height: 330px;
     top: 1073px;
     left: 1112px;
-  }
+}
+
+.nav_logo {
+    width: 100px;
+    object-fit: contain;
+}
+
+.nav_avatar {
+    width: 35px;
+    object-fit: contain;
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    z-index: 1;
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
+}
+
+.nav_black {
+    background-color: black;
+    padding: 10px;
+}
+
+.search-container {
+    margin: 20px 0;
+}
+
+.search-container input[type="text"] {
+    padding: 10px;
+    width: 200px;
+    border-radius: 4px;
+    border: 1px solid #ffffff;
+    font-size: 16px;
+}
+
+.search-container button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff3737;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #ff0000;
+}
+
+.movie-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.movie-item img.large {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.movie-item h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.movie-item p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #ccc;
+}
