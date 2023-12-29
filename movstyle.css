@@ -1,0 +1,103 @@
+html,
+body {
+    background-color: #141414;
+    margin: 0;
+    color: #ffffff;
+}
+
+iframe {
+    width: flex;
+    padding-top: 56.25%;
+    position: relative;
+}
+
+iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: flex;
+    height: flex;
+}
+
+.movie-card {
+    position: relative;
+    /* Added position relative */
+    display: flex;
+    border: 1px solid #ccc;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.movie-poster {
+    position: absolute;
+    /* Added position absolute */
+    top: 2;
+    left: 1;
+    width: 175px;
+    height: 245px;
+    z-index: 1;
+    /* Ensuring the image is above the details */
+}
+
+.movie-details {
+    flex: 1;
+    padding-left: 200px;
+    /* Adjusted padding to ensure content starts after the image */
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    z-index: 2; /* Changed from 1 to 2 */
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
+    background-color: black;
+    height: 35px;
+}
+
+iframe {
+    width: 90vw;
+    height: calc(60vh - 80px);
+    padding: 20px;
+    margin-top: 75px;
+}
+
+.nav_black {
+    background-color: black;
+}
+
+.movie-details p {
+    margin: 10px 0;
+}
+
+.facebook-like,
+.download,
+.HD {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    /* Adjust spacing between items */
+}
+
+.facebook-like {
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    /* Centers the items vertically */
+}
+
+.HD:active,
+.facebook-like:active,
+a.href:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    /* This will remove the tap highlight on mobile devices */
+}
