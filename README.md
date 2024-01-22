@@ -1,6 +1,6 @@
 # 🎬 Prime Stream Web Application 🍿
 
-Welcome to Prime Stream, a captivating web application designed for streaming movies and TV shows. Crafted with HTML, CSS, and JavaScript, Prime Stream fetches content dynamically from a CSV file on GitHub, ensuring real-time updates. Dive into different sections featuring Netflix Originals, Trending Now, All Time Favorites, New Arrivals, and Popular content.
+Welcome to Prime Stream, a captivating web application designed for streaming movies and TV shows. Crafted with HTML, CSS, and JavaScript, Prime Stream fetches content dynamically from a Omdb database, ensuring real-time updates. Dive into different sections featuring Netflix Originals, Trending Now, All Time Favorites, New Arrivals, and Popular content.
 
 ## Features 🚀
 
